@@ -32,6 +32,7 @@
 
 .p-card-body {
   gap: 20px !important;
+  padding: 12px !important;
 }
 .p-card-title {
   font-size: 20px !important;
