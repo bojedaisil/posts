@@ -3,14 +3,15 @@ import HttpRepository from "..";
 import { IPost } from "./post.repositories.d";
 
 interface IPostResponce {
-  data: IPost[];
+  post: IPost[];
 }
 
 class PostRepository extends HttpRepository {
   private path = "posts";
 
-  async getPosts(dto: { page: number; limit: number }): Promise<IPostResponce> {
-    const responce = await this.get<IPostResponce>(`${this.path}`, dto);
+  async getPosts(): Promise<IPostResponce> {
+    const responce = await this.get<IPostResponce>(`${this.path}`);
+
     return responce;
   }
 }

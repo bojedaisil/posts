@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps({
+import { IPost } from "../repositories/post/post.repositories.d";
+
+defineProps({
   post: Object,
 });
 </script>

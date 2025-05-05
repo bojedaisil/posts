@@ -12,11 +12,13 @@ declare module "@vue/runtime-core" {
 }
 
 export default {
-  install: (app: App, options: any) => {
-    const baseURL: string = process.env.VITE_PUBLIC_API_BASE_URL as string;
+  install: (app: App) => {
+    const baseURL: string = import.meta.env.VITE_PUBLIC_API_BASE_URL;
     const api: IApiInstance = {
       post: new PostRepository(`${baseURL}/`, {}),
     };
     app.provide("api", api);
+    app.config.globalProperties.$api = api;
+    // console.log(api);
   },
 };

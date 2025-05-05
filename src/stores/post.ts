@@ -1,27 +1,43 @@
-import { PluginContainer } from "vite";
+import { computed, inject } from "vue";
 import { IPost } from "../repositories/post/post.repositories.d";
 import { defineStore } from "pinia";
-import { inject } from "vue";
 
 interface IPostStore {
-  data: IPost[];
+  posts: IPost[];
+  searchQuery: string;
 }
 
-export const usePostStore = defineStore("post", {
+export const usePostStore = defineStore("posts", {
   state: (): IPostStore => ({
-    data: [],
+    posts: [],
+    searchQuery: "",
   }),
 
   actions: {
-    async getPost(dto: { page: number; limit: number }) {
+    async getPost() {
       try {
-        const api = this.$api;
-        const responce = await api.post.getPosts(dto);
-        this.data = responce.data;
-        return responce;
+        const responce = await this.$api.post.getPosts();
+        this.posts = responce;
       } catch (err) {
         console.log(err);
       }
     },
   },
+  // getters: {
+  //   filteredPosts: (state) => {
+  //     const search = state.posts.filter((post) => {
+  //       return state.posts
+  //         .toLowerCase()
+  //         .split("")
+  //         .every((v) => post.title.toLowerCase().startWidth(v));
+  //     });
+  //     console.log(search);
+
+  //     if (state.searchQuery) {
+  //       return search;
+  //     } else {
+  //       return state.posts;
+  //     }
+  //   },
+  // },
 });

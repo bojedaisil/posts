@@ -1,48 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { onMounted, computed } from "vue";
 import { usePostStore } from "@/stores/post";
-import { IPost } from "@/repositories/post/post.repositories";
 
 const postStore = usePostStore();
-
-// const limit = ref(10);
-// const posts = ref<Post[]>([]);
-const searchQuery = ref("");
-const filter = postStore.data.filter((item) => {
-  return searchQuery.value
-    .toLowerCase()
-    .split(" ")
-    .every((v) => item.title.toLowerCase().startsWith(v));
-});
-
-// const getPosts = async () => {
-//   try {
-//     const url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit.value}`;
-//     const responce = await fetch(url);
-//     const data: IPost[] = await responce.json();
-//     console.log(data);
-//     posts.value = data;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+const { getPost } = postStore;
 
 const filteredPosts = computed(() => {
-  const search = posts.value.filter((item) => {
-    return searchQuery.value
+  const search = postStore.posts.filter((item) => {
+    return postStore.searchQuery
       .toLowerCase()
       .split(" ")
       .every((v) => item.title.toLowerCase().startsWith(v));
   });
 
-  if (searchQuery.value) {
+  if (postStore.searchQuery) {
     return search;
   } else {
-    return posts.value;
+    return postStore.posts;
   }
 });
 
-onMounted(getPosts);
+onMounted(getPost);
 </script>
 
 <template>
@@ -51,11 +29,11 @@ onMounted(getPosts);
       type="text"
       class="container__search"
       placeholder="search..."
-      v-model="searchQuery"
+      v-model="postStore.searchQuery"
     />
 
     <div class="container_list">
-      <Photo v-for="post in filteredPosts" :post="post" />
+      <Post v-for="post in filteredPosts" :post="post" />
     </div>
   </div>
 </template>

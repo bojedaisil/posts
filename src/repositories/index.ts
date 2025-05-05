@@ -1,9 +1,4 @@
-import axios, {
-  AxiosError,
-  type AxiosInstance,
-  type AxiosResponse,
-  type InternalAxiosRequestConfig,
-} from "axios";
+import axios, { type AxiosInstance, type AxiosResponse } from "axios";
 
 class HttpRepository {
   private client: AxiosInstance;
@@ -17,10 +12,8 @@ class HttpRepository {
       validateStatus: (status) => status >= 200 && status < 300,
     });
   }
-  protected async get<M>(url: string, params: any): Promise<M> {
-    const responce: AxiosResponse = await this.client.get(url, {
-      params: params,
-    });
+  protected async get<M>(url: string): Promise<M> {
+    const responce: AxiosResponse = await this.client.get(url);
     return responce.data;
   }
 }
