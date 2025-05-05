@@ -1,4 +1,4 @@
-import PostRepository from "../src/repositories/post/post.repositories";
+import PostRepository from "../src/repositories/post/index.repositories";
 import { App } from "vue";
 
 interface IApiInstance {

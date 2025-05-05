@@ -1,6 +1,6 @@
 import HttpRepository from "..";
 
-import { IPost } from "./post.repositories.d";
+import { IPost } from "./index.repositories.d";
 
 interface IPostResponce {
   post: IPost[];

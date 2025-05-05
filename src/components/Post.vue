@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { IPost } from "../repositories/post/post.repositories.d";
-
 defineProps({
   post: Object,
 });

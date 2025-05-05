@@ -1,39 +1,24 @@
 <script setup lang="ts">
-import { onMounted, computed } from "vue";
+import { onMounted } from "vue";
 import { usePostStore } from "@/stores/post";
+import Button from "primevue/button";
 
 const postStore = usePostStore();
 const { getPost } = postStore;
-
-const filteredPosts = computed(() => {
-  const search = postStore.posts.filter((item) => {
-    return postStore.searchQuery
-      .toLowerCase()
-      .split(" ")
-      .every((v) => item.title.toLowerCase().startsWith(v));
-  });
-
-  if (postStore.searchQuery) {
-    return search;
-  } else {
-    return postStore.posts;
-  }
-});
 
 onMounted(getPost);
 </script>
 
 <template>
   <div class="container">
-    <input
-      type="text"
-      class="container__search"
-      placeholder="search..."
-      v-model="postStore.searchQuery"
+    <Button
+      icon="pi pi-moon"
+      @click="postStore.toggleDarkMode()"
+      severity="secondary"
     />
-
+    <Search />
     <div class="container_list">
-      <Post v-for="post in filteredPosts" :post="post" />
+      <Post v-for="post in postStore.filteredPosts" :post="post" />
     </div>
   </div>
 </template>
