@@ -22,10 +22,9 @@ defineProps({
   &__title {
     font-size: 20px;
     font-weight: bolder;
-    font-family: "MonteCarlo", sans-serif;
   }
   &__body {
-    font-size: 15px;
+    font-size: 16px;
     font-family: "NotoSerif", sans-serif;
   }
 }

@@ -12,21 +12,14 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/assets/font/Montserrat-Black.ttf") format("truetype");
+    src: url("/src/assets/font/Montserrat-Black.ttf") format("truetype");
   }
   @font-face {
     font-family: "NotoSerif";
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url("/assets/font/NotoSerif-VariableFont.ttf") format("truetype");
-  }
-  @font-face {
-    font-family: "MonteCarlo";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("/assets/font/MonteCarlo-Regular.ttf") format("truetype");
+    src: url("/src/assets/font/NotoSerif-VariableFont.ttf") format("truetype");
   }
 }
 
@@ -37,5 +30,5 @@
 .p-card-title {
   font-size: 20px !important;
   font-weight: bolder !important;
-  font-family: "MonteCarlo", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }

@@ -21,4 +21,14 @@ onMounted(getPost);
   width: 100%;
   gap: 10px;
 }
+@media screen and (max-width: 1000px) {
+  .postlist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 666px) {
+  .postlist {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
