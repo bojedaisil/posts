@@ -6,7 +6,4 @@
   </div>
 </template>
 
-<style scoped>
-body {
-}
-</style>
+<style scoped></style>
