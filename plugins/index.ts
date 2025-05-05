@@ -19,6 +19,5 @@ export default {
     };
     app.provide("api", api);
     app.config.globalProperties.$api = api;
-    // console.log(api);
   },
 };

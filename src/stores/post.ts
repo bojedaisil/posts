@@ -33,7 +33,6 @@ export const usePostStore = defineStore("posts", {
       const search = state.posts.filter((post) => {
         return post.title.toLowerCase().startsWith(searchItem);
       });
-      console.log(search);
 
       if (state.searchQuery) {
         return search;

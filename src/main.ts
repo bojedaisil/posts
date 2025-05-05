@@ -11,16 +11,21 @@ import ComponentCustomProperties from "../plugins/index";
 import PostRepository from "./repositories/post/index.repositories";
 
 //components
-import Post from "./components/Post.vue";
-import Search from "./components/Search.vue";
+import post from "./components/atomes/post/index.vue";
+import search from "./components/atomes/search/index.vue";
+import darkbutton from "./components/atomes/darkbutton/index.vue";
+import appheader from "./components/molecules/app-header/index.vue";
+import postlist from "./components/molecules/postlist/index.vue";
 
 //primevue
+import { definePreset } from "@primeuix/themes";
 import "primeicons/primeicons.css";
-
 import PrimeVue from "primevue/config";
-import InputText from "primevue/inputtext";
-import IftaLabel from "primevue/iftalabel";
 import Aura from "@primeuix/themes/aura";
+import Card from "primevue/card";
+import IftaLabel from "primevue/iftalabel";
+import InputText from "primevue/inputtext";
+import Button from "primevue/button";
 
 const pinia = createPinia();
 
@@ -31,20 +36,68 @@ pinia.use(({ store }) => {
   };
   store.$api = api;
 });
+
+const MyPreset = definePreset(Aura, {
+  semantic: {
+    colorScheme: {
+      light: {
+        surface: {
+          0: "#ffffff",
+          50: "{zinc.50}",
+          100: "{zinc.100}",
+          200: "{zinc.200}",
+          300: "{zinc.300}",
+          400: "{zinc.400}",
+          500: "{zinc.500}",
+          600: "{zinc.600}",
+          700: "{zinc.700}",
+          800: "{zinc.800}",
+          900: "{zinc.900}",
+          950: "{zinc.950}",
+        },
+      },
+      dark: {
+        surface: {
+          0: "#ffffff",
+          50: "{slate.50}",
+          100: "{slate.100}",
+          200: "{slate.200}",
+          300: "{slate.300}",
+          400: "{slate.400}",
+          500: "{slate.500}",
+          600: "{slate.600}",
+          700: "{slate.700}",
+          800: "{slate.800}",
+          900: "{slate.900}",
+          950: "{slate.950}",
+        },
+      },
+    },
+  },
+});
+
 const app = createApp(App);
 app.use(PrimeVue, {
   // Default theme configuration
   theme: {
-    preset: Aura,
+    preset: MyPreset,
     options: {
       darkModeSelector: ".my-app-dark",
     },
   },
 });
-app.component("InputText", InputText);
+
+app.component("search", search);
+app.component("post", post);
+app.component("dark-button", darkbutton);
+app.component("app-header", appheader);
+app.component("post-list", postlist);
+
+//prime-vue components
+app.component("Card", Card);
 app.component("IftaLabel", IftaLabel);
-app.component("Search", Search);
-app.component("Post", Post);
+app.component("InputText", InputText);
+app.component("prime-button", Button);
 
 app.use(router);
 app.use(pinia);
