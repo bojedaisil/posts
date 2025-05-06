@@ -23,9 +23,6 @@ export const usePostStore = defineStore("posts", {
         console.log(err);
       }
     },
-    toggleDarkMode() {
-      document.documentElement.classList.toggle("my-app-dark");
-    },
   },
   getters: {
     filteredPosts: (state) => {

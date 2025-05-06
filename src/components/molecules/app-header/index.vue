@@ -3,7 +3,7 @@
 <template>
   <header class="header">
     <search />
-    <dark-button />
+    <toogle-theme />
   </header>
 </template>
 

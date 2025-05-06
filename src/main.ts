@@ -4,16 +4,13 @@ import App from "./App.vue";
 import router from "./router";
 import "./assets/main.css";
 
-//plugins
-import ComponentCustomProperties from "../plugins/index";
-
 //repositories
 import PostRepository from "./repositories/post/index.repositories";
 
 //components
 import post from "./components/atomes/post/index.vue";
-import search from "./components/atomes/search/index.vue";
-import darkbutton from "./components/atomes/darkbutton/index.vue";
+import search from "./components/molecules/search/index.vue";
+import toogleTheme from "./components/atomes/toogleTheme/index.vue";
 import appheader from "./components/molecules/app-header/index.vue";
 import postlist from "./components/molecules/postlist/index.vue";
 
@@ -89,7 +86,7 @@ app.use(PrimeVue, {
 
 app.component("search", search);
 app.component("post", post);
-app.component("dark-button", darkbutton);
+app.component("toogle-theme", toogleTheme);
 app.component("app-header", appheader);
 app.component("post-list", postlist);
 
@@ -102,5 +99,4 @@ app.component("prime-button", Button);
 app.use(router);
 app.use(pinia);
 
-app.use(ComponentCustomProperties);
 app.mount("#app");

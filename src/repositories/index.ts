@@ -19,3 +19,4 @@ class HttpRepository {
 }
 
 export default HttpRepository;
+export * from "./post/index.repositories";

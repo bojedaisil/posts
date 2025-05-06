@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { usePostStore } from "@/stores/post";
-const postStore = usePostStore();
+function toggleDarkMode() {
+  document.documentElement.classList.toggle("my-app-dark");
+}
 </script>
 
 <template>
   <prime-button
     icon="pi pi-moon"
-    @click="postStore.toggleDarkMode()"
+    @click="toggleDarkMode()"
     severity="secondary"
   />
 </template>
